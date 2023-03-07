@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto+Mono:wght@200&display=swap');
+
+*{
+    font-family: 'Climate Crisis', cursive;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body{
+    height: 100%;
+    box-sizing: border-box;
+    
+}
+
+.game-div{
+    font-size: 30px;
+    padding: 10px;
+    border: 3px solid;
+    border-color: rgba(10, 10, 10, 0.253);
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: rgb(51, 51, 51);
+}
+
+#user-buttons{
+    font-size: 30px;
+    margin-top: 30px;
+    font-weight: 900;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    border: 3px solid rgb(103, 99, 99);
+    color: rgb(51, 51, 51);
+    padding: 5px 30px;
+}
+
+.play > div{
+    padding: 10px;
+}
