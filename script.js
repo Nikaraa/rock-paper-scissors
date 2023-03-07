@@ -1,15 +1,15 @@
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random()*3);
     if(computerChoice==0){
-        cpu= "rock";
+        cpu= "Rock";
     }
     else if(computerChoice==1){
-        cpu= "paper";
+        cpu= "Paper";
     }
     else{
-        cpu= "scissors";
+        cpu= "Scissors";
     }
-    return cpu.toLowerCase();
+    return cpu;
 }
 
 function winner(){
@@ -36,13 +36,25 @@ let player;
 let cpu;
 let result;
 
+function removeTransition(e){
+    console.log(e);
+}
+
 userButtons.forEach(button => button.addEventListener('click', () => {
+
     player=button.textContent;
     getComputerChoice();
     playerText.textContent = `Player: ${player}`;
     cpuText.textContent = `CPU: ${cpu}`;
     resultText.textContent = "Result: "+winner();
 }));
+
+
+
+const announceText=document.querySelector('.announce');
+
+
+
 
 
 //function game(){

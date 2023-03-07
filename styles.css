@@ -8,7 +8,7 @@
 body{
     height: 100%;
     box-sizing: border-box;
-    
+
 }
 
 .game-div{
@@ -35,4 +35,13 @@ body{
 
 .play > div{
     padding: 10px;
+}
+
+#user-buttons:hover{
+    background-color: rgb(195, 180, 156);
+}
+#user-buttons:active{
+    background-color: rgb(135, 125, 109);
+    transform: scale(1.08);
+    border-color: rgb(12, 12, 12);
 }
