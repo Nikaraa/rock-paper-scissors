@@ -1,1 +1,1 @@
-Rock, paper, scissors project which can be played from the console.
+Rock, paper, scissors project.
