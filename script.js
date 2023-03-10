@@ -39,8 +39,6 @@ let cpu;
 let score = 0;
 let scorePc = 0;
 
-let i = 0;
-
 const content = document.querySelector('.content');
 
 const scoreDisplay = document.querySelector('#user');
@@ -72,11 +70,11 @@ function game(selection) {
         resultText.textContent = "Computer won! " + selection + " lose to " + cpu + "!";
     }
     if(score==5){
-        resultText.textContent="You won the game! Congratulations!";
+        content.textContent="You won the game! Congratulations!";
         disableButtons();
     }
     if(scorePc==5){
-        resultText.textContent="The computer won the game! Try again!";
+        content.textContent="The computer won the game! Try again!";
         disableButtons();
     }
 }
