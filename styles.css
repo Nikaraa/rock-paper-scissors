@@ -25,6 +25,7 @@ body{
 #user-buttons{
     font-size: 30px;
     margin-top: 30px;
+    margin-bottom: 20px;
     font-weight: 900;
     background-color: blanchedalmond;
     border-radius: 20px;
@@ -44,4 +45,25 @@ body{
     background-color: rgb(135, 125, 109);
     transform: scale(1.08);
     border-color: rgb(12, 12, 12);
+}
+
+.cpuscore{
+    color: rgb(149, 59, 59);
+}
+
+.userscore, .cpuscore{
+    margin: 25px 0 20px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.userscore{
+    color: rgb(139, 149, 59);
+}
+
+.content{
+     margin: 25px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgb(16, 17, 16);
 }

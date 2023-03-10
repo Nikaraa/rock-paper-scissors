@@ -1,92 +1,117 @@
-function getComputerChoice(){
-    let computerChoice = Math.floor(Math.random()*3);
-    if(computerChoice==0){
-        cpu= "Rock";
+function getComputerChoice() {
+    let computerChoice = Math.floor(Math.random() * 3);
+    if (computerChoice == 0) {
+        cpu = "Rock";
     }
-    else if(computerChoice==1){
-        cpu= "Paper";
+    else if (computerChoice == 1) {
+        cpu = "Paper";
     }
-    else{
-        cpu= "Scissors";
+    else {
+        cpu = "Scissors";
     }
     return cpu;
 }
 
-function winner(){
-    cpu=cpu.toLowerCase();
-    player=player.toLowerCase();
-    if((cpu == "rock"&&player=="paper")||(cpu == "paper"&&player=="scissors")||(cpu == "scissors"&&player=="rock")){
+function winner(cpu, player) {
+    cpu = cpu.toLowerCase();
+    player = player.toLowerCase();
+    if ((cpu == "rock" && player == "paper") || (cpu == "paper" && player == "scissors") || (cpu == "scissors" && player == "rock")) {
         return "You win!";
     }
-    else if(player == cpu){
+    else if (player == cpu) {
         return "Draw!";
     }
-    else{
-        return "Computer wins!"; 
+    else {
+        return "Computer wins!";
     }
 }
 
-const userButtons= document.querySelectorAll('#user-buttons');
+const userButtons = document.querySelectorAll('#user-buttons');
 
-const playerText= document.querySelector('.playerText');
-const cpuText= document.querySelector('.cpuText');
-const resultText= document.querySelector('.res');
+const playerText = document.querySelector('.playerText');
+const cpuText = document.querySelector('.cpuText');
+const resultText = document.querySelector('.res');
 
 let player;
 let cpu;
-let result;
 
-function removeTransition(e){
-    console.log(e);
+
+let score = 0;
+let scorePc = 0;
+
+let i = 0;
+
+const content = document.querySelector('.content');
+
+const scoreDisplay = document.querySelector('#user');
+const scorePcDisplay = document.querySelector('#cpu');;
+
+
+
+function disableButtons() {
+    userButtons.forEach(elem => {
+        elem.disabled = true;
+    })
 }
 
-userButtons.forEach(button => button.addEventListener('click', () => {
+function game(selection) {
+    let cpu=getComputerChoice();
+    round = winner(cpu, selection);
+    resultText.textContent = "Result: " + round;
+    if (round = "You win!") {
+        score++;
+        scoreDisplay.textContent = score;
+        resultText.textContent = "You won! " + selection + " beats " + cpu + "!";
+    }
+    else if (round = "Draw!") {
+        result.textContent = "Tie game!";
+    }
+    else {
+        scorePc++;
+        scorePcDisplay.textContent = +scorePc;
+        resultText.textContent = "Computer won! " + selection + " lose to " + cpu + "!";
+    }
+    if(score==5){
+        resultText.textContent="You won the game! Congratulations!";
+        disableButtons();
+    }
+    if(scorePc==5){
+        resultText.textContent="The computer won the game! Try again!";
+        disableButtons();
+    }
+}
 
-    player=button.textContent;
-    getComputerChoice();
-    playerText.textContent = `Player: ${player}`;
-    cpuText.textContent = `CPU: ${cpu}`;
-    resultText.textContent = "Result: "+winner();
-}));
+userButtons.forEach(button =>
+    button.addEventListener('click', () => {
+        game(button.value);
+    })
+);
 
+// function game() {
 
+//     for (let i = 0; i < 10; i++) {
+//         let game = winner();
+//         if (game == "You win!") {
+//             score++;
 
-const announceText=document.querySelector('.announce');
-
-
-
-
-
-//function game(){
-//   let userScore=0;
-//     let cpuScore=0;
-//     for(let i=0;i<10;i++){
-//         let userChoice = prompt("Please choose between rock, scissors or paper: ").toLowerCase();
-//         let computerChoice = getComputerChoice();
-//         let x=winner(userChoice, computerChoice);
-//         if(x=="draw"){
-//             console.log("User choice is "+userChoice+" and cpu choice is: "+computerChoice+". It's a tie!");
-//             i--; 
 //         }
-//         else if(x=="won"){
-//             userScore++;
-//             console.log("User choice is "+userChoice+" and cpu choice is: "+computerChoice+". You got a point!");
+//         else if (game == "Draw!") {
+//             i--;
+//             content.textContent = "Tie game!";
 //         }
-//         else if(x="lost"){
-//             cpuScore++;
-//             console.log("User choice is "+userChoice+" and cpu choice is: "+computerChoice+". The cpu got a point!");
+//         else if (game == "Computer wins!") {
+//             scorePc++;
+
+//             cpuScore.textContent = "Cpu Score: " + scorePc;
 //         }
-//         if(userScore==5||computerChoice==5){
+//         if (score == 5 || scorePc == 5) {
 //             break;
 //         }
-//     } 
-//     if(cpuScore=5&&userScore<5){
-//         return console.log("You lost the game! Try again!");
 //     }
-//     else{
-//         return console.log("You won the game! Congratulations!");
+//     if (score == 5) {
+//         return "You won the game!";
+//     }
+//     if (scorePc == 5) {
+//         return "Computer won the game!"
 //     }
 // }
-
-// let x=game();
-// console.log(x);
