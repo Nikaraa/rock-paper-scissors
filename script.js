@@ -1,15 +1,14 @@
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
     if (computerChoice == 0) {
-        cpu = "Rock";
+        return "Rock";
     }
     else if (computerChoice == 1) {
-        cpu = "Paper";
+        return "Paper";
     }
     else {
-        cpu = "Scissors";
+        return "Scissors";
     }
-    return cpu;
 }
 
 function winner(cpu, player) {
@@ -53,35 +52,38 @@ function disableButtons() {
 }
 
 function game(selection) {
-    let cpu=getComputerChoice();
+    let cpu = getComputerChoice();
     round = winner(cpu, selection);
     resultText.textContent = "Result: " + round;
-    if (round = "You win!") {
+
+    if (round == "You win!") {
         score++;
         scoreDisplay.textContent = score;
         resultText.textContent = "You won! " + selection + " beats " + cpu + "!";
+        if (score == 5) {
+            content.textContent = "You won the game! Congratulations!";
+            disableButtons();
+        }
     }
-    else if (round = "Draw!") {
-        result.textContent = "Tie game!";
+
+    else if (round == "Draw!") {
+        resultText.textContent = "Tie game!";
     }
+    
     else {
         scorePc++;
-        scorePcDisplay.textContent = +scorePc;
+        scorePcDisplay.textContent = scorePc;
         resultText.textContent = "Computer won! " + selection + " lose to " + cpu + "!";
-    }
-    if(score==5){
-        content.textContent="You won the game! Congratulations!";
-        disableButtons();
-    }
-    if(scorePc==5){
-        content.textContent="The computer won the game! Try again!";
-        disableButtons();
+        if (scorePc == 5) {
+            content.textContent = "The computer won the game! Try again!";
+            disableButtons();
+        }
     }
 }
 
 userButtons.forEach(button =>
     button.addEventListener('click', () => {
-        game(button.value);
+        game(button.textContent);
     })
 );
 
