@@ -55,6 +55,8 @@ function game(selection) {
     let cpu = getComputerChoice();
     round = winner(cpu, selection);
     resultText.textContent = "Result: " + round;
+    playerText.textContent= 'User '+ selection;
+    cpuText.textContent= 'CPU: '+cpu;
 
     if (round == "You win!") {
         score++;
